@@ -1,21 +1,18 @@
-#coding:utf-8
-#1-10偶数的平方
+#-*- coding:utf-8 -*-
 
 from functools import reduce
 
+def log(func):
+    def wrapper(self):
+        print('log')
+        func(self)
+    return wrapper
 
 
-def filter2(map2):
-    def filter3(map2_list):
-        filter_list=map2(map2_list)
-        return list(filter(lambda y:y%2==0,filter_list))
-    return filter3
+class Test():
+    @log
+    def hello(self):
+        print('hello')
 
-@filter2
-def map2(map2_list):
-    return list(map(lambda x:x*x,map2_list))
-
-d1=map2(list(range(1,11)))
-print(d1)
-
-
+t = Test()
+t.hello()
