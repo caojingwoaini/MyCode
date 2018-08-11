@@ -31,3 +31,8 @@ loop=asyncio.get_event_loop()
 tasks=[payMoney() for i in range(3)]
 loop.run_until_complete(asyncio.wait(tasks))
 loop.close()
+
+#执行后的结果:
+#2018-08-11 10:50:08 执行转账事务成功
+#2018-08-11 10:50:08 执行转账事务成功
+#2018-08-11 10:50:08 执行转账事务失败并回滚
