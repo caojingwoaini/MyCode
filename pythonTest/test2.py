@@ -4,20 +4,12 @@ import asyncio
 from functools import reduce
 import time
 import pymysql
+from selenium import webdriver
 
-"""
-db=pymysql.Connection(host="localhost",db="asto",port=3306,user="root",password="caojing520",charset="utf8")
-cursor=db.cursor()
-sum=1
+@asyncio.coroutine
+def wget(host):
+    print(len(host),host,time.time())
 
-
-while True:
-    if sum==30000:
-        break
-    cursor.execute("insert into StudentMoney(StudentId,StudentMoney) values (%d,%.2f);" % (sum, float(sum)))
-    cursor.execute("commit;")
-    sum=sum+1
-
-cursor.close()
-db.close()
-"""
+loop=asyncio.get_event_loop()
+task=[wget(i) for i in ["www.baidu.com","www.geogle.com","www.taobao.com"]]
+loop.run_until_complete(asyncio.wait(task))
